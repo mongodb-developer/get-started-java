@@ -56,5 +56,5 @@ export MONGODB_URI="mongodb+srv://usr:pwd@new.mongodb.net/dbname?retryWrites=tru
 
 ## Related information
 
-* [MongoDB Java driver QuickStart](https://mongodb.github.io/mongo-java-driver/3.11/driver/getting-started/quick-start/)
+* [MongoDB Java driver: Getting Started](https://mongodb.github.io/mongo-java-driver/3.11/driver/getting-started/quick-start/)
 

@@ -54,7 +54,11 @@ From within the docker environment, you can also change the `MONGODB_URI` by cha
 export MONGODB_URI="mongodb+srv://usr:pwd@new.mongodb.net/dbname?retryWrites=true"
 ```
 
-## Related information
+## Tutorials
 
-* [MongoDB Java driver QuickStart](https://mongodb.github.io/mongo-java-driver/3.11/driver/getting-started/quick-start/)
+* [Quickstart Java and MongoDB: Starting and Setup](https://www.mongodb.com/blog/post/quick-start-java-and-mongodb--starting-and-setup)
+* [MongoDB Java driver: Getting Started](https://mongodb.github.io/mongo-java-driver/3.11/driver/getting-started/quick-start/)
 
+## About 
+
+This project is part of the MongoDB Quickstart code examples. Please see [quickstart-readme](https://github.com/mongodb-developer/quickstart-readme) for more information. 

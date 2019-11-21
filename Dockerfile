@@ -30,7 +30,7 @@ WORKDIR ${HOME}
 
 RUN mkdir -p ${HOME}/java/src/main/java/com/start
 COPY ./java/pom.xml ${HOME}/java/
-COPY ./java/src/main/java/com/start/Quickstart.java ${HOME}/java/src/main/java/com/start/
+COPY ./java/src/main/java/com/start/Getstarted.java ${HOME}/java/src/main/java/com/start/
 
 RUN sed -i "s/x.x.x/${DRIVER_VERSION}/g" ${HOME}/java/pom.xml
 

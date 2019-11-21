@@ -27,14 +27,14 @@ import static com.mongodb.client.model.Filters.exists;
 import static com.mongodb.client.model.Projections.excludeId;
 import static com.mongodb.client.model.Sorts.descending;
 
-public class Quickstart {
+public class Getstarted {
 
     public static void main(final String[] args) {
         String mongoURI = System.getenv("MONGODB_URI");
 
         MongoClient mongoClient = MongoClients.create(mongoURI);
 
-        MongoDatabase database = mongoClient.getDatabase("quickstart");
+        MongoDatabase database = mongoClient.getDatabase("getstarted");
         MongoCollection<Document> collection = database.getCollection("java");
 
         collection.drop();

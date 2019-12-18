@@ -4,7 +4,7 @@ Repository to help getting started with MongoDB Java driver connecting to MongoD
 
 ## Information
 
-This Get-Started project uses [MongoDB Java driver](https://mongodb.github.io/mongo-java-driver/) version 3.11.1 by default. Although you can change the driver version, the provided code example was only tested against the default version of MongoDB driver. There is no guarantee that the code sample will work for all possible versions of the driver.
+This Get-Started project uses [MongoDB Java driver](https://mongodb.github.io/mongo-java-driver/) version 3.12.0 by default. Although you can change the driver version, the provided code example was only tested against the default version of MongoDB driver. There is no guarantee that the code sample will work for all possible versions of the driver.
 
 ## Pre-requisites 
 
@@ -25,7 +25,7 @@ In order to execute the code example, you need to specify `MONGODB_URI` environm
       ```
    * To use a different driver version and specify `MONGODB_URI`. For example:
       ```
-      docker build . -t start-java --build-arg DRIVER_VERSION=3.10.2 --build-arg MONGODB_URI="mongodb+srv://usr:pwd@example.mongodb.net/dbname?retryWrites=true"
+      docker build . -t start-java --build-arg DRIVER_VERSION=3.11.2 --build-arg MONGODB_URI="mongodb+srv://usr:pwd@example.mongodb.net/dbname?retryWrites=true"
       ```
    This will build a docker image with a tag name `start-java`. 
    As a result of the build, the example code is compiled for the specified driver version and ready to be executed.

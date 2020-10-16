@@ -1,6 +1,7 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
-ARG DRIVER_VERSION=3.11.1
+ARG DEBIAN_FRONTEND=noninteractive
+ARG DRIVER_VERSION=4.1.1
 ARG MONGODB_URI
 
 RUN apt-get update && apt-get install -y \

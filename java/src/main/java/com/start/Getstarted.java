@@ -21,6 +21,7 @@ import org.bson.Document;
 import java.util.ArrayList;
 import java.util.List;
 import static java.util.Arrays.asList;
+import java.util.function.Consumer;
 
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Filters.exists;
@@ -90,13 +91,13 @@ public class Getstarted {
         Document group = Document.parse("{$group:{_id: null, total :{$sum:'$i'}}}"); 
         List<Document> pipeline = asList(group);
         
+        Consumer<Document> printBlock = new Consumer<Document>() {
+            public void accept(final Document doc) {
+                System.out.println(doc.toJson());
+            };
+        };     
         AggregateIterable<Document> iterable = collection.aggregate(pipeline);
-        iterable.forEach(new Block<Document>() {
-            @Override
-            public void apply(final Document document) {
-                System.out.println(document.toJson());
-            }
-        });
+        iterable.forEach(printBlock); 
 
         // release resources
         mongoClient.close();

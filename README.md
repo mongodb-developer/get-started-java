@@ -4,7 +4,7 @@ Repository to help getting started with MongoDB Java driver connecting to MongoD
 
 ## Information
 
-This Get-Started project uses [MongoDB Java driver](https://mongodb.github.io/mongo-java-driver/) version 3.11.1 by default. Although you can change the driver version, the provided code example was only tested against the default version of MongoDB driver. There is no guarantee that the code sample will work for all possible versions of the driver.
+This Get-Started project uses [MongoDB Java driver](https://mongodb.github.io/mongo-java-driver/) version 4.1.1 by default. Although you can change the driver version, the provided code example was only tested against the default version of MongoDB driver. There is no guarantee that the code sample will work for all possible versions of the driver.
 
 ## Pre-requisites 
 
@@ -56,8 +56,8 @@ export MONGODB_URI="mongodb+srv://usr:pwd@new.mongodb.net/dbname?retryWrites=tru
 
 ## Tutorials
 
+* [MongoDB Java driver documentation](https://docs.mongodb.com/drivers/java/)
 * [Quickstart Java and MongoDB: Starting and Setup](https://www.mongodb.com/blog/post/quick-start-java-and-mongodb--starting-and-setup)
-* [MongoDB Java driver: Getting Started](https://mongodb.github.io/mongo-java-driver/3.11/driver/getting-started/quick-start/)
 
 ## About 
 

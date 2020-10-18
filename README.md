@@ -25,7 +25,7 @@ In order to execute the code example, you need to specify `MONGODB_URI` environm
       ```
    * To use a different driver version and specify `MONGODB_URI`. For example:
       ```
-      docker build . -t start-java --build-arg DRIVER_VERSION=3.10.2 --build-arg MONGODB_URI="mongodb+srv://usr:pwd@example.mongodb.net/dbname?retryWrites=true"
+      docker build . -t start-java --build-arg DRIVER_VERSION=3.11.2 --build-arg MONGODB_URI="mongodb+srv://usr:pwd@example.mongodb.net/dbname?retryWrites=true"
       ```
    This will build a docker image with a tag name `start-java`. 
    As a result of the build, the example code is compiled for the specified driver version and ready to be executed.

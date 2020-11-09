@@ -27,8 +27,6 @@ ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
 ENV DRIVER_VERSION ${DRIVER_VERSION}
 ENV MONGODB_URI=${MONGODB_URI}
 
-WORKDIR ${HOME}
-
 RUN mkdir -p ${HOME}/java/src/main/java/com/start
 COPY ./java/pom.xml ${HOME}/java/
 COPY ./java/src/main/java/com/start/Getstarted.java ${HOME}/java/src/main/java/com/start/
@@ -36,6 +34,8 @@ COPY ./java/src/main/java/com/start/Getstarted.java ${HOME}/java/src/main/java/c
 RUN sed -i "s/x.x.x/${DRIVER_VERSION}/g" ${HOME}/java/pom.xml
 
 RUN chown -R ubuntu ${HOME}/java && chmod -R 750 ${HOME}/java
+
+WORKDIR ${HOME}/java
 
 USER ubuntu
 

@@ -7,8 +7,7 @@
   <dependencies>
 	<dependency>
 		<groupId>org.mongodb</groupId>
-		<artifactId>mongodb-driver-sync</artifactId>
-		<version>x.x.x</version>
+		<artifactId>mongodb-driver-sync</artifactId><version>x.x.x</version>
 	</dependency>
   </dependencies>
   <properties>

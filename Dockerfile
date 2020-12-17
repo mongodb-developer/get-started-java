@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
     rm -rf /var/lib/apt/lists/*
 
 RUN export uid=1000 gid=1000 && \
-    mkdir -p /home/ubuntu && \
+    mkdir -p /home/ubuntu && mkdir /workspace && \
     echo "ubuntu:x:${uid}:${gid}:Developer,,,:/home/ubuntu:/bin/bash" >> /etc/passwd && \
     echo "ubuntu:x:${uid}:" >> /etc/group && \
     echo "ubuntu ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/ubuntu && \
@@ -23,11 +23,12 @@ RUN export uid=1000 gid=1000 && \
     chown ${uid}:${gid} -R /home/ubuntu
 
 ENV HOME /home/ubuntu
+ENV WORKSPACE /workspace
 ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
 ENV DRIVER_VERSION ${DRIVER_VERSION}
 ENV MONGODB_URI=${MONGODB_URI}
 
-RUN mkdir -p ${HOME}/java/src/main/java/com/start
+RUN mkdir -p ${HOME}/src/main/java/com/start
 COPY ./java/pom.xml ${HOME}/java/
 COPY ./java/src/main/java/com/start/Getstarted.java ${HOME}/java/src/main/java/com/start/
 
@@ -35,8 +36,8 @@ RUN sed -i "s/x.x.x/${DRIVER_VERSION}/g" ${HOME}/java/pom.xml
 
 RUN chown -R ubuntu ${HOME}/java && chmod -R 750 ${HOME}/java
 
-WORKDIR ${HOME}/java
-
 USER ubuntu
 
-CMD ["/bin/bash"]  
+WORKDIR ${WORKSPACE}/java
+
+ENTRYPOINT ["/bin/bash", "-c"]  

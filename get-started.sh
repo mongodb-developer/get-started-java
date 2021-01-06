@@ -1,5 +1,4 @@
 #!/bin/bash
-
 MONGODB_URI=${1}
 if [ -z ${MONGODB_URI} ]
 then

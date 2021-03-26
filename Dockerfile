@@ -26,7 +26,7 @@ ENV HOME /home/ubuntu
 ENV WORKSPACE /workspace
 ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
 ENV DRIVER_VERSION ${DRIVER_VERSION}
-ENV MONGODB_URI=${MONGODB_URI}
+ENV MONGODB_URI ${MONGODB_URI}
 
 RUN mkdir -p ${HOME}/src/main/java/com/start
 COPY ./java/pom.xml ${HOME}/java/

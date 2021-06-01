@@ -5,7 +5,7 @@ then
     read -p "MONGODB URI (Required): " MONGODB_URI
 fi 
 
-DRIVER_VERSION=${2:-4.2.2}
+DRIVER_VERSION=${2:-4.2.3}
 echo "Executing ... "
 docker run --rm -e MONGODB_URI=${MONGODB_URI} \
     -v "$(pwd)":/workspace \

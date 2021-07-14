@@ -2,8 +2,6 @@ FROM adoptopenjdk/openjdk15:alpine-slim
 
 LABEL org.opencontainers.image.source=https://github.com/mongodb-developer/get-started-java
 
-ENV DRIVER_VERSION=4.2.3
-
 ENV HOME /home/gsuser
 
 RUN apk add --no-cache maven

@@ -29,7 +29,6 @@ import static com.mongodb.client.model.Projections.excludeId;
 import static com.mongodb.client.model.Sorts.descending;
 
 public class Getstarted {
-
     public static void main(final String[] args) {
         String mongoURI = System.getenv("MONGODB_URI");
 
@@ -38,8 +37,9 @@ public class Getstarted {
         MongoDatabase database = mongoClient.getDatabase("getstarted");
         MongoCollection<Document> collection = database.getCollection("java");
 
-        System.out.println("Resetting collection");
+        System.out.println("Connecting to cluster");
         collection.drop();
+        System.out.println("Collection [getstarted.java] has been reset");
 
         // make a document and insert it
         Document doc = new Document("name", "MongoDB")

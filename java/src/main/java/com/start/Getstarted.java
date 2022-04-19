@@ -1,8 +1,11 @@
 package com.start;
 
-import com.mongodb.Block;
-import com.mongodb.client.MongoClients;
+import ch.qos.logback.classic.Level;
+import ch.qos.logback.classic.Logger;
+
+import com.mongodb.client.AggregateIterable;
 import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
@@ -17,6 +20,7 @@ import com.mongodb.client.result.UpdateResult;
 import com.mongodb.client.result.DeleteResult;
 
 import org.bson.Document;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +32,17 @@ import static com.mongodb.client.model.Filters.exists;
 import static com.mongodb.client.model.Projections.excludeId;
 import static com.mongodb.client.model.Sorts.descending;
 
+@SuppressWarnings("ConstantConditions")
 public class Getstarted {
     public static void main(final String[] args) {
+        
+        // See https://www.mongodb.com/docs/drivers/java/sync/current/fundamentals/logging/#logger-names
+        // for available logger names that can be individually configured, in addition to this default
+        // that covers all of them (logger names are hierarchical and inherit from their ancestor loggers)
+        Logger root = (Logger) LoggerFactory.getLogger("org.mongodb.driver");
+        // Available levels are: OFF, ERROR, WARN, INFO, DEBUG, TRACE, ALL
+        root.setLevel(Level.WARN);
+
         String mongoURI = System.getenv("MONGODB_URI");
 
         MongoClient mongoClient = MongoClients.create(mongoURI);
@@ -53,7 +66,7 @@ public class Getstarted {
         System.out.println("\t" + myDoc.toJson());
 
         // insert many
-        List<Document> documents = new ArrayList<Document>();
+        List<Document> documents = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             documents.add(new Document("i", i));
         }
@@ -62,13 +75,11 @@ public class Getstarted {
         System.out.println("\tTotal # of documents: " + collection.countDocuments());
 
         // lets get all the documents in the collection and print them out
-        MongoCursor<Document> cursor = collection.find().iterator();
-        try {
+        try (MongoCursor<Document> cursor = collection.find().iterator())
+        {
             while (cursor.hasNext()) {
                 System.out.println(cursor.next().toJson());
             }
-        } finally {
-            cursor.close();
         }
 
         // now use a query to get 1 document out
@@ -99,15 +110,10 @@ public class Getstarted {
         // Aggregation
         Document group = Document.parse("{$group:{_id: null, total :{$sum:'$i'}}}"); 
         List<Document> pipeline = asList(group);
-        
-        Consumer<Document> printBlock = new Consumer<Document>() {
-            public void accept(final Document doc) {
-                System.out.println(doc.toJson());
-            };
-        };     
+  
         AggregateIterable<Document> iterable = collection.aggregate(pipeline);
         System.out.println("Aggregation Result:");
-        iterable.forEach(printBlock); 
+        iterable.forEach(documentX -> System.out.println(documentX.toJson())); 
 
         // release resources
         mongoClient.close();
